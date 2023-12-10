@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: docker-app
+  template:
+    metadata:
+      labels:
+        app: docker-app
+    spec:
+      containers:
+        - name: docker-app-container
+          image: rsun19/react-example-image:latest
+          ports:
+            - containerPort: 3000
